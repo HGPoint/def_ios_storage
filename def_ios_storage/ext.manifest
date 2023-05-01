@@ -1,0 +1,7 @@
+name: "IOSStorageExt"
+
+platforms:
+    ios:
+        context:
+            frameworks: ["Security", "AVFoundation", "CoreGraphics", "CoreMedia", "CoreMotion", "CoreTelephony", "Foundation", "MessageUI", "Foundation","SafariServices", "StoreKit", "SystemConfiguration", "UIKit", "WebKit", "MobileCoreServices"]
+            linkFlags:  ["-ObjC"]

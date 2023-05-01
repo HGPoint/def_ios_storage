@@ -1,0 +1,21 @@
+- name: def_ios_storage
+  type: table
+  desc: Functions for interacting with iOS keychain
+  members:
+
+#*****************************************************************************************************
+
+  - name: init
+    type: function
+
+#*****************************************************************************************************
+
+  - name: get_int
+    type: function
+
+    parameters:
+      - name: key
+        type: string
+      - name: int_value
+        type: number
+
