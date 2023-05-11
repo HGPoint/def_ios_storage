@@ -2,3 +2,6 @@
 title = IOSKeychainStorage
 version = 1.0
 
+
+[library]
+include_dirs = def_ios_storage
