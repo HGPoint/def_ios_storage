@@ -10,7 +10,7 @@
 #include <UIKit/UIKit.h>
 #endif
 
-namespace dmIOSStorageExt {
+namespace dmAppsflyerAdRevenue {
 
 
 void SetStringValue(const char* key, const char*  value)
@@ -21,7 +21,7 @@ void SetStringValue(const char* key, const char*  value)
         NSString *username = [bindings objectForKey:[NSString stringWithUTF8String:key]];
 }
 
-const char* GetStringValue(const char* key, const char*  defaultValue)
+const char* GetStringValue(const char* key)
 {
         PDKeychainBindings *bindings = [PDKeychainBindings sharedKeychainBindings];
         NSString *username = [bindings objectForKey:[NSString stringWithUTF8String:key]];

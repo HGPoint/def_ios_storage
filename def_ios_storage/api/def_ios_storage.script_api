@@ -1,6 +1,6 @@
 - name: def_ios_storage
   type: table
-  desc: Functions for interacting with iOS keychain
+  desc: Functions for interacting with Appsflyer Ad Revenue
   members:
 
 #*****************************************************************************************************

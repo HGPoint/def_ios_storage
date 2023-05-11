@@ -4,11 +4,11 @@
 
 #include <dmsdk/sdk.h>
 
-namespace dmIOSStorageExt 
+namespace dmAppsflyerAdRevenue 
 {
 
 void SetStringValue(const char* key, const char*  value);
-const char*  GetStringValue(const char* key, const char*  defaultValue);
+const char*  GetStringValue(const char* key);
 
 void SetDoubleValue(const char* key, double value);
 double GetDoubleValue(const char* key, double defaultValue);

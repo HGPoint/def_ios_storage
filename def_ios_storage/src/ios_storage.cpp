@@ -11,14 +11,22 @@
 #include <stdlib.h>
 #include "ios_storage.h"
 
-namespace dmIOSStorageExt {
+namespace dmAppsflyerAdRevenue {
 
 static int Lua_get_string(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 1);
     const char* key = (const char*)luaL_checkstring(L, 1);
-    const char* defaultValue = (const char*)luaL_checkstring(L, 2);
-    const char* value = GetStringValue(key, defaultValue);
+    const char* typeName = (const char*)luaL_typename(L, 2);
+    const char* defaultValue = NULL;
+    if (typeName != "nil")
+        defaultValue = (const char*)luaL_checkstring(L, 2);
+
+    const char* value = GetStringValue(key);
+
+    if (value == NULL)
+        value = defaultValue;
+
     lua_pushstring(L, value);
     return 1;
 }
@@ -47,36 +55,36 @@ static void LuaInit(lua_State* L)
     assert(top == lua_gettop(L));
 }
 
-static dmExtension::Result AppInitializeIOSStorageExt(dmExtension::AppParams* params)
+static dmExtension::Result AppInitializeAppsflyerAdRevenue(dmExtension::AppParams* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result InitializeIOSStorageExt(dmExtension::Params* params)
+static dmExtension::Result InitializeAppsflyerAdRevenue(dmExtension::Params* params)
 {
     LuaInit(params->m_L);
     dmLogInfo("Registered extension def_ios_storage");
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result UpdateIOSStorageExt(dmExtension::Params* params)
+static dmExtension::Result UpdateAppsflyerAdRevenue(dmExtension::Params* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result AppFinalizeIOSStorageExt(dmExtension::AppParams* params)
+static dmExtension::Result AppFinalizeAppsflyerAdRevenue(dmExtension::AppParams* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result FinalizeIOSStorageExt(dmExtension::Params* params)
+static dmExtension::Result FinalizeAppsflyerAdRevenue(dmExtension::Params* params)
 {
     return dmExtension::RESULT_OK;
 }
 
 } // namespace
 
-DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, dmIOSStorageExt::AppInitializeIOSStorageExt, dmIOSStorageExt::AppFinalizeIOSStorageExt, dmIOSStorageExt::InitializeIOSStorageExt, dmIOSStorageExt::UpdateIOSStorageExt,  0, dmIOSStorageExt::FinalizeIOSStorageExt)
+DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, dmAppsflyerAdRevenue::AppInitializeAppsflyerAdRevenue, dmAppsflyerAdRevenue::AppFinalizeAppsflyerAdRevenue, dmAppsflyerAdRevenue::InitializeAppsflyerAdRevenue, dmAppsflyerAdRevenue::UpdateAppsflyerAdRevenue,  0, dmAppsflyerAdRevenue::FinalizeAppsflyerAdRevenue)
 
 #else // platform
 DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, 0, 0, 0, 0,  0, 0)
