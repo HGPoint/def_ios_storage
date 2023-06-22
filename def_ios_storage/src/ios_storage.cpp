@@ -19,7 +19,7 @@ static int Lua_get_string(lua_State* L)
     const char* key = (const char*)luaL_checkstring(L, 1);
     const char* typeName = (const char*)luaL_typename(L, 2);
     const char* defaultValue = NULL;
-    if (typeName != "nil")
+    if (typeName != "nil" && typeName != "no value")
         defaultValue = (const char*)luaL_checkstring(L, 2);
 
     const char* value = GetStringValue(key);
